@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+	//crio as variáveis pro número inserido e o resultado em binário(sem ordem)
+	int numeroInserido; 
+	cin >> numeroInserido;
+	string numeroBinario;
+	//pego o numero inserido e divido por 2, se tiver resto então adiciono 1 no binário sem resto adiciono 0
+	while(numeroInserido != 0){
+		if(numeroInserido % 2 != 0){
+			numeroBinario = numeroBinario + "1";
+		}
+		else{
+			numeroBinario = numeroBinario + "0";
+		}
+		numeroInserido = numeroInserido / 2;
+	}
+	//com o numero binário pronto printamos ele porém ainda fora de ordem
+	cout << "Número em binário sem ordem: " << numeroBinario << endl;
+	int numeroFinal;
+	int numInt;
+	//descubro o numero de algarismos que tem no numero binario pra saber quantas vezes executar meu while
+	int algarismos; algarismos = numeroBinario.size();
+	//transformo o nosso numero binario que ta em string em uma variavel do tipo inteiro pra realizar operações com ele
+	numInt = stoi(numeroBinario);
+	//uso esse while pra inverter o numero 
+	while(algarismos != 0){
+		int digito;
+		digito = numInt % 10;
+		numInt = int(numInt / 10);
+		numeroFinal = numeroFinal * 10 + digito;
+		algarismos = algarismos - 1;
+		}
+	//printo o numero binario na ordem correta 
+	cout << "Número em binário com ordem: " << numeroFinal << endl;
+	return 0;
+}
